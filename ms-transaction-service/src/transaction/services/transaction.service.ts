@@ -14,7 +14,8 @@ export class TransactionService {
     private readonly eventBus: ClientKafka,
     @InjectRepository(Transaction)
     private readonly repository: Repository<Transaction>,
-  ) {}
+  ) {
+  }
 
   async create(data: CreateTransactionDTO): Promise<void> {
     const transaction = new Transaction();
@@ -48,5 +49,9 @@ export class TransactionService {
 
   async find(): Promise<Transaction[]> {
     return this.repository.find();
+  }
+
+  async findOneById(id: string): Promise<Transaction> {
+    return this.repository.findOneBy({ id: id });
   }
 }

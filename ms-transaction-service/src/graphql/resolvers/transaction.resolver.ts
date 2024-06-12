@@ -21,4 +21,9 @@ export class TransactionResolver {
   ) {
     await this.service.create(transactionInput);
   }
+
+  @Query(() => TransactionModel)
+  async getTransactionById(@Args('id') id: string) {
+    return this.service.findOneById(id);
+  }
 }

@@ -17,6 +17,7 @@ scalar DateTime
 
 type Query {
   getTransaction: [TransactionModel!]!
+  getTransactionById(id: String!): TransactionModel!
 }
 
 type Mutation {
