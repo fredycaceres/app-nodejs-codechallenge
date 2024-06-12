@@ -28,3 +28,50 @@ Query for all transactions
 }
 ```
 
+Query to get a transaction by id 
+
+```
+{
+  getTransactionById(id: "8959c4b2-54f5-4839-98a7-1c4bfc906236") {
+    id
+    status
+    type
+    value
+    createdAt
+  }
+}
+```
+
+I also modified the Dockerfile to fix some Kafka errors (The images were not optimized for Apple arm64)
+
+# To run the project:
+
+```
+docker compose up
+```
+
+```
+cd ms-transaction-service
+yarn install
+yarn start:dev
+```
+
+```
+cd ms-antifraud-service
+yarn install
+yarn start:dev
+```
+
+Open the graphql playground to make graphql requests
+
+# Load testing
+
+Install k6
+On MacOS
+```
+brew install k6
+```
+Run this command on the base directory
+```
+k6 run k6.js
+```
